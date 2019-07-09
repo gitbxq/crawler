@@ -10,7 +10,7 @@ from scrapy.exceptions import DropItem
 
 class LinkcollectPipeline(object):
     def __init__(self):
-        self.file = open('../../../linkResult.jl','w')
+        self.file = open('../../../linkResult.txt','w')
         self.seen = set()
 
     def process_item(self, item, spider):
@@ -19,7 +19,7 @@ class LinkcollectPipeline(object):
             raise DropItem('Duplicate link %s' % item['link'])
         #添加link
         self.seen.add(item['link'])
-        line = json.dumps(dict(item), ensure_ascii=False) + '\n'
+        line = item['link'] +  '\n'
         self.file.write(line)
 
         return item
