@@ -25,14 +25,8 @@ class LinkSpider(scrapy.Spider):
                 yield Request(temp_link, callback=self.parse) #继续爬取
                 item['link'] = temp_link
 
-                #读取link标题
-                link_text = link.xpath('text()').extract()
-                if link_text:
-                    item['link_text'] = str(link_text[0].encode('utf-8').strip())
-                else:
-                    item['link_text'] = None
                 print(item['link'])
-                print(item['link_text'])
+                #print(item['link_text'])
                 yield item
 
         pass
