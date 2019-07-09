@@ -9,7 +9,6 @@ import scrapy
 
 
 class LinkcollectItem(scrapy.Item):
-    link_text = scrapy.Field()
     link = scrapy.Field()
 
     pass
